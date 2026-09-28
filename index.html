@@ -3,18 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RootOS</title>
+  <title>RootOS - Terminal Desktop</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Top bar -->
-  <div id="top" class="topbar">
-    <div class="topbar-brand" id="welcomeopen">RootOS</div>
-    <div id="timeElement" class="topbar-clock">00:00:00</div>
-  </div>
-
-  <!-- Desktop App Icons -->
+  <!-- Desktop Icons Grid -->
   <div id="desktopApps" class="desktop-apps">
     <div class="app-icon" id="notesIcon">
       <div class="icon-frame">
@@ -27,32 +21,107 @@
       </div>
       <p class="icon-label">DevLogs.sh</p>
     </div>
+
+    <div class="app-icon" id="sysinfoIcon">
+      <div class="icon-frame">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2ea043" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+          <line x1="8" y1="21" x2="16" y2="21"></line>
+          <line x1="12" y1="17" x2="12" y2="21"></line>
+        </svg>
+      </div>
+      <p class="icon-label">SysInfo.bin</p>
+    </div>
   </div>
 
-  <!-- Welcome Window -->
+  <!-- Start Menu -->
+  <div id="startMenu" class="start-menu">
+    <div class="start-menu-sidebar">
+      <div class="start-user">root</div>
+    </div>
+    <div class="start-menu-apps">
+      <div class="start-app-item" id="welcomeopen">
+        <span>></span> Terminal
+      </div>
+      <div class="start-app-item" id="startNotes">
+        <span>></span> DevLogs
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Taskbar -->
+  <div id="taskbar" class="taskbar">
+    <div class="taskbar-left">
+      <div class="start-btn" id="startBtn">Root</div>
+      <span class="taskbar-pill">v1.1.0-stable</span>
+    </div>
+    <div class="taskbar-center">
+      <span class="status-indicator"></span>
+      <span class="taskbar-msg">Operational</span>
+    </div>
+    <div class="taskbar-right">
+      <span id="timeElement" class="taskbar-clock">00:00:00</span>
+    </div>
+  </div>
+
+  <!-- Window 1: Welcome Screen -->
   <div class="window" id="welcome" style="top: 100px; left: 140px;">
     <div class="windowheader" id="welcomeheader">
-      <div class="closebutton" id="welcomeclose"></div>
+      <div class="closebutton" id="welcomeclose" title="Close"></div>
       <span class="headertext">bash -- root@itzdeep:~#</span>
       <div style="width: 12px;"></div>
     </div>
-    <div class="window-content">
-      <h2>Welcome to RootOS</h2>
-      <p>A web-based desktop environment built for Hack Club Stardance.</p>
-      <p class="status-msg">System status: online and listening.</p>
+    <div class="window-content terminal-window">
+      <div class="prompt-line"><span class="prompt-user">root@itzdeep</span>:<span class="prompt-dir">~</span># ./init_welcome.sh</div>
+      <h2 class="terminal-title">Welcome to RootOS</h2>
+      <p class="terminal-desc">An interactive web desktop environment built from scratch for the Stardance challenge.</p>
+      
+      <div class="info-card">
+        <p><strong>Architecture:</strong> Vanilla HTML5, CSS3 & JavaScript</p>
+        <p><strong>Controls:</strong> Drag title bars to reposition windows. Tap icons to focus or open applications.</p>
+      </div>
+
+      <div class="terminal-footer">
+        <a class="terminal-btn" href="https://github.com/itzdeep2" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+        <a class="terminal-btn" href="https://slack.hackclub.com" target="_blank" rel="noopener noreferrer">Hack Club Slack (@itzdeep2)</a>
+      </div>
     </div>
   </div>
 
-  <!-- Notes Window -->
-  <div class="window" id="notes" style="top: 150px; left: 260px; display: none; width: 500px;">
+  <!-- Window 2: DevLogs App -->
+  <div class="window" id="notes" style="top: 150px; left: 280px; display: none;">
     <div class="windowheader" id="notesheader">
-      <div class="closebutton" id="notesclose"></div>
+      <div class="closebutton" id="notesclose" title="Close"></div>
       <span class="headertext">editor -- devlogs.txt</span>
       <div style="width: 12px;"></div>
     </div>
-    <div class="window-content">
-      <h2>System Logs</h2>
-      <p>Local storage records and mission tasks.</p>
+    <div class="window-content notes-layout">
+      <div class="notes-sidebar" id="sidebar"></div>
+      <div class="notes-body" id="notesContent"></div>
+    </div>
+  </div>
+
+  <!-- Window 3: SysInfo App -->
+  <div class="window" id="sysinfo" style="top: 200px; left: 380px; display: none;">
+    <div class="windowheader" id="sysinfoheader">
+      <div class="closebutton" id="sysinfoclose" title="Close"></div>
+      <span class="headertext">diagnostics -- neofetch</span>
+      <div style="width: 12px;"></div>
+    </div>
+    <div class="window-content sysinfo-window">
+      <pre class="ascii-art">
+   ______             __  ____  _____
+  / ____/____  ____  / /_/ __ \/ ___/
+ / /   / __ \/ __ \/ __/ / / /\__ \ 
+/ /___/ /_/ / /_/ / /_/ /_/ /___/ / 
+\____/\____/\____/\__/\____//____/  
+      </pre>
+      <ul class="sysinfo-list">
+        <li><strong>OS:</strong> RootOS x86_64</li>
+        <li><strong>Host:</strong> Browser Runtime Engine</li>
+        <li><strong>Shell:</strong> WebOS-sh 1.0</li>
+        <li><strong>Stack:</strong> JS / DOM API / CSS Grid</li>
+      </ul>
     </div>
   </div>
 
