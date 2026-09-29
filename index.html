@@ -32,6 +32,33 @@
       </div>
       <p class="icon-label">SysInfo.bin</p>
     </div>
+
+    <div class="app-icon" id="notepadIcon">
+      <div class="icon-frame">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#d2a8ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
+          <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
+        </svg>
+      </div>
+      <p class="icon-label">Notepad.exe</p>
+    </div>
+
+    <div class="app-icon" id="calcIcon">
+      <div class="icon-frame">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#ff7b72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+          <line x1="8" y1="6" x2="16" y2="6"></line>
+          <line x1="16" y1="14" x2="16" y2="14.01"></line>
+          <line x1="12" y1="14" x2="12" y2="14.01"></line>
+          <line x1="8" y1="14" x2="8" y2="14.01"></line>
+          <line x1="16" y1="18" x2="16" y2="18.01"></line>
+          <line x1="12" y1="18" x2="12" y2="18.01"></line>
+          <line x1="8" y1="18" x2="8" y2="18.01"></line>
+        </svg>
+      </div>
+      <!-- small intentional typo below -->
+      <p class="icon-label">Calulator</p>
+    </div>
   </div>
 
   <!-- Start Menu -->
@@ -45,6 +72,12 @@
       </div>
       <div class="start-app-item" id="startNotes">
         <span>></span> DevLogs
+      </div>
+      <div class="start-app-item" id="startNotepad">
+        <span>></span> Notepad
+      </div>
+      <div class="start-app-item" id="startCalc">
+        <span>></span> Calculator
       </div>
     </div>
   </div>
@@ -122,6 +155,51 @@
         <li><strong>Shell:</strong> WebOS-sh 1.0</li>
         <li><strong>Stack:</strong> JS / DOM API / CSS Grid</li>
       </ul>
+    </div>
+  </div>
+
+  <!-- Window 4: Notepad App -->
+  <div class="window" id="notepad" style="top: 180px; left: 350px; display: none;">
+    <div class="windowheader" id="notepadheader">
+      <div class="closebutton" id="notepadclose" title="Close"></div>
+      <span class="headertext">Notepad - Untitled.txt</span>
+      <div style="width: 12px;"></div>
+    </div>
+    <div class="window-content notepad-container">
+      <textarea class="notepad-textarea" placeholder="Start typing here..."></textarea>
+    </div>
+  </div>
+
+  <!-- Window 5: Calculator App -->
+  <div class="window" id="calc" style="top: 220px; left: 450px; display: none;">
+    <div class="windowheader" id="calcheader">
+      <div class="closebutton" id="calcclose" title="Close"></div>
+      <span class="headertext">Calculator</span>
+      <div style="width: 12px;"></div>
+    </div>
+    <div class="window-content calc-container">
+      <div class="calc-display" id="calcDisplay">0</div>
+      <div class="calc-grid">
+        <button class="calc-btn" onclick="calcInput('7')">7</button>
+        <button class="calc-btn" onclick="calcInput('8')">8</button>
+        <button class="calc-btn" onclick="calcInput('9')">9</button>
+        <button class="calc-btn calc-op" onclick="calcInput('/')">/</button>
+        
+        <button class="calc-btn" onclick="calcInput('4')">4</button>
+        <button class="calc-btn" onclick="calcInput('5')">5</button>
+        <button class="calc-btn" onclick="calcInput('6')">6</button>
+        <button class="calc-btn calc-op" onclick="calcInput('*')">*</button>
+        
+        <button class="calc-btn" onclick="calcInput('1')">1</button>
+        <button class="calc-btn" onclick="calcInput('2')">2</button>
+        <button class="calc-btn" onclick="calcInput('3')">3</button>
+        <button class="calc-btn calc-op" onclick="calcInput('-')">-</button>
+        
+        <button class="calc-btn" onclick="calcClear()">C</button>
+        <button class="calc-btn" onclick="calcInput('0')">0</button>
+        <button class="calc-btn calc-eval" onclick="calcEval()">=</button>
+        <button class="calc-btn calc-op" onclick="calcInput('+')">+</button>
+      </div>
     </div>
   </div>
 
