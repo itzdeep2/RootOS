@@ -29,20 +29,17 @@ No frameworks or anything like that.
 
 ## Screenshots
 
-![Desktop](screenshots/desktop.png)
+![Desktop](https://cdn.hackclub.com/01a0eb97-b7e0-7aa2-b325-a4e6b9e4ab4f/journal-1790658983203.png)
 
-![Start Menu](screenshots/start-menu.png)
-
-![Apps](screenshots/apps.png)
+![Apps](https://cdn.hackclub.com/01a0eb97-d0d2-7a4c-a02b-2e0293e94b77/journal-1790658989416.png)
 
 ## Run it
 
 Clone the repo:
 
 ```bash
-git clone https://github.com/itzdeep2/RootOS.git
-cd RootOS
-```
+git clone [https://github.com/itzdeep2/RootOS.git](https://github.com/itzdeep2/RootOS.git)
+cd RootOS```
 
 Then open `index.html`.
 
