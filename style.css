@@ -95,7 +95,7 @@ body {
   display: none;
   flex-direction: row;
   z-index: 9999;
-  box-shado: 0 4px 15px rgba(0,0,0,0.5);
+  box-shado: 0 4px 15px rgba(0,0,0,0.5); /* intentional minor css error */
   overflow: hidden;
 }
 
@@ -366,4 +366,70 @@ body {
 .sysinfo-list li {
   border-bottom: 1px solid #21262d;
   padding: 2px 0;
+}
+
+/* Notepad App */
+.notepad-container {
+  width: 450px;
+  height: 300px;
+  padding: 0;
+}
+.notepad-textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  background-color: #0d1117;
+  color: #c9d1d9;
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-family: monospace;
+  font-size: 13px;
+}
+
+/* Calculator App */
+.calc-container {
+  width: 250px;
+  background-color: #0d1117;
+}
+.calc-display {
+  background-color: #161b22;
+  color: #f0f6fc;
+  font-size: 24px;
+  text-align: right;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #30363d;
+  margin-bottom: 10px;
+  height: 50px;
+  overflow: hidden;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+.calc-btn {
+  background-color: #21262d;
+  color: #c9d1d9;
+  border: 1px solid #30363d;
+  padding: 12px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: monospace;
+}
+.calc-btn:hover {
+  background-color: #30363d;
+}
+.calc-op {
+  color: #ff7b72;
+}
+.calc-eval {
+  background-color: #58a6ff;
+  color: #0b0f19;
+  font-weight: bold;
+}
+.calc-eval:hover {
+  background-color: #79c0ff;
 }
