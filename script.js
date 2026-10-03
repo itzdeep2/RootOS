@@ -8,10 +8,12 @@ updateClock();
 let biggestIndex = 10;
 let selectedIcon = null;
 const taskbar = document.getElementById("taskbar");
+const taskbarApps = document.getElementById("taskbarApps");
 
 // Start Menu Logic
 let menuOpen = false;
-document.getElementById('startBtn').addEventListener('click', function() {
+document.getElementById('startBtn').addEventListener('click', function(e) {
+  e.stopPropagation();
   const menu = document.getElementById('startMenu');
   if(menuOpen) {
     menu.style.display = 'none';
@@ -24,6 +26,28 @@ document.getElementById('startBtn').addEventListener('click', function() {
   }
 });
 
+function updateTaskbarTab(windowId, isOpen) {
+  const existingTab = document.getElementById("tab-" + windowId);
+  if (isOpen && !existingTab) {
+    const tab = document.createElement("div");
+    tab.className = "taskbar-app-tab";
+    tab.id = "tab-" + windowId;
+    tab.innerText = windowId;
+    tab.addEventListener("click", () => {
+      const win = document.getElementById(windowId);
+      if (win.style.display === "none") {
+        win.style.display = "flex";
+        handleWindowTap(win);
+      } else {
+        minimizeWindow(win);
+      }
+    });
+    taskbarApps.appendChild(tab);
+  } else if (!isOpen && existingTab) {
+    existingTab.remove();
+  }
+}
+
 function openWindow(element) {
   element.style.display = "flex";
   biggestIndex++;
@@ -32,9 +56,16 @@ function openWindow(element) {
   
   document.getElementById('startMenu').style.display = 'none';
   menuOpen = false;
+
+  updateTaskbarTab(element.id, true);
 }
 
 function closeWindow(element) {
+  element.style.display = "none";
+  updateTaskbarTab(element.id, false);
+}
+
+function minimizeWindow(element) {
   element.style.display = "none";
 }
 
@@ -74,6 +105,8 @@ function dragElement(element) {
   header.onmousedown = startDragging;
 
   function startDragging(e) {
+    if (e.target.classList.contains("control-btn")) return;
+    
     e = e || window.event;
     e.preventDefault();
     initialX = e.clientX;
@@ -115,6 +148,11 @@ function initializeWindow(elementName) {
     closeBtn.addEventListener("click", () => closeWindow(screen));
   }
 
+  const minBtn = document.getElementById(elementName + "min");
+  if (minBtn) {
+    minBtn.addEventListener("click", () => minimizeWindow(screen));
+  }
+
   const icon = document.getElementById(elementName + "Icon");
   if (icon) {
     icon.addEventListener("click", (e) => {
@@ -129,12 +167,17 @@ initializeWindow("notes");
 initializeWindow("sysinfo");
 initializeWindow("notepad");
 initializeWindow("calc");
+initializeWindow("paint");
+
+// Ensure welcome screen tab is visible on load
+updateTaskbarTab("welcome", true);
 
 // Start menu app bindings
 document.getElementById("welcomeopen").addEventListener("click", () => openWindow(document.getElementById("welcome")));
 document.getElementById("startNotes").addEventListener("click", () => openWindow(document.getElementById("notes")));
 document.getElementById("startNotepad").addEventListener("click", () => openWindow(document.getElementById("notepad")));
 document.getElementById("startCalc").addEventListener("click", () => openWindow(document.getElementById("calc")));
+document.getElementById("startPaint").addEventListener("click", () => openWindow(document.getElementById("paint")));
 
 document.body.addEventListener("click", (e) => {
   if (!e.target.closest(".app-icon") && selectedIcon) {
@@ -159,9 +202,9 @@ const devLogs = [
     content: "<h3>Tailscale Mesh Routing</h3><p>Configured peer routing table for server sync across local and remote stations without port forwarding.</p>"
   },
   {
-    title: "Keystroke HID",
-    date: "Session 03",
-    content: "<h3>Hardware Automation</h3><p>Flashed ATtiny85 microcontroller with custom USB HID payloads for one-touch dev terminal execution.</p>"
+    title: "Paint Canvas",
+    date: "Session 04",
+    content: "<h3>HTML5 Canvas API</h3><p>Added custom interactive 2D canvas context with real-time brush stroke rendering and color pallet selection.</p>"
   }
 ];
 
@@ -194,7 +237,7 @@ function populateNotesSidebar() {
 populateNotesSidebar();
 
 // Calculator logic
-let clacInput = ""; // slight typo here
+let clacInput = "";
 function calcInput(val) {
   if(clacInput === "0" || clacInput === "Error") {
     clacInput = val;
@@ -211,7 +254,6 @@ function calcClear() {
 
 function calcEval() {
   try {
-    // using basic eval for the simple calulator
     clacInput = String(eval(clacInput));
     document.getElementById("calcDisplay").innerText = clacInput;
   } catch (e) {
@@ -219,3 +261,43 @@ function calcEval() {
     document.getElementById("calcDisplay").innerText = clacInput;
   }
 }
+
+// Paint Canvas Logic
+const canvas = document.getElementById("paintCanvas");
+const ctx = canvas.getContext("2d");
+let painting = false;
+
+function startPosition(e) {
+  painting = true;
+  draw(e);
+}
+
+function finishedPosition() {
+  painting = false;
+  ctx.beginPath();
+}
+
+function draw(e) {
+  if (!painting) return;
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  ctx.lineWidth = document.getElementById("paintBrushSize").value;
+  ctx.lineCap = "round";
+  ctx.strokeStyle = document.getElementById("paintColor").value;
+
+  ctx.lineTo(x, y);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+}
+
+function clearCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+canvas.addEventListener("mousedown", startPosition);
+canvas.addEventListener("mouseup", finishedPosition);
+canvas.addEventListener("mousemove", draw);
+canvas.addEventListener("mouseleave", finishedPosition);
