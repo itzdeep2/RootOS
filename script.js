@@ -1,9 +1,64 @@
+// Clock Engine & Settings
+let timeFormat = "24"; // "12" or "24"
+let showSeconds = true;
+
 function updateClock() {
   const now = new Date();
-  document.getElementById("timeElement").innerText = now.toLocaleTimeString();
+  let timeStr = "";
+  
+  if (timeFormat === "12") {
+    let hours = now.getHours();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    if (showSeconds) {
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      timeStr = `${hours}:${minutes}:${seconds} ${ampm}`;
+    } else {
+      timeStr = `${hours}:${minutes} ${ampm}`;
+    }
+  } else {
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    if (showSeconds) {
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      timeStr = `${hours}:${minutes}:${seconds}`;
+    } else {
+      timeStr = `${hours}:${minutes}`;
+    }
+  }
+
+  document.getElementById("timeElement").innerText = timeStr;
 }
 setInterval(updateClock, 1000);
 updateClock();
+
+function setTimeFormat(fmt) {
+  timeFormat = fmt;
+  updateClock();
+}
+
+function toggleSeconds() {
+  showSeconds = !showSeconds;
+  updateClock();
+}
+
+// Hostname customization
+function applyHostname() {
+  const input = document.getElementById("hostInput");
+  const val = input.value.trim();
+  if (!val) return;
+
+  document.getElementById("startUserLabel").innerText = val.split('@')[0] || val;
+  document.getElementById("termPromptUser").innerText = val;
+  document.getElementById("termHeaderLabel").innerText = `bash -- ${val}:~#`;
+}
+
+// Theme Engine
+function applyTheme(themeName) {
+  document.body.className = themeName;
+}
 
 let biggestIndex = 10;
 let selectedIcon = null;
@@ -168,16 +223,18 @@ initializeWindow("sysinfo");
 initializeWindow("notepad");
 initializeWindow("calc");
 initializeWindow("paint");
+initializeWindow("settings");
 
-// Ensure welcome screen tab is visible on load
 updateTaskbarTab("welcome", true);
 
-// Start menu app bindings
+// Start menu bindings
 document.getElementById("welcomeopen").addEventListener("click", () => openWindow(document.getElementById("welcome")));
 document.getElementById("startNotes").addEventListener("click", () => openWindow(document.getElementById("notes")));
 document.getElementById("startNotepad").addEventListener("click", () => openWindow(document.getElementById("notepad")));
 document.getElementById("startCalc").addEventListener("click", () => openWindow(document.getElementById("calc")));
 document.getElementById("startPaint").addEventListener("click", () => openWindow(document.getElementById("paint")));
+document.getElementById("startSettings").addEventListener("click", () => openWindow(document.getElementById("settings")));
+document.getElementById("startSysinfo").addEventListener("click", () => openWindow(document.getElementById("sysinfo")));
 
 document.body.addEventListener("click", (e) => {
   if (!e.target.closest(".app-icon") && selectedIcon) {
@@ -189,7 +246,7 @@ document.body.addEventListener("click", (e) => {
   }
 });
 
-// Notes App
+// Notes App Data
 const devLogs = [
   {
     title: "Kernel Init",
@@ -205,6 +262,11 @@ const devLogs = [
     title: "Paint Canvas",
     date: "Session 04",
     content: "<h3>HTML5 Canvas API</h3><p>Added custom interactive 2D canvas context with real-time brush stroke rendering and color pallet selection.</p>"
+  },
+  {
+    title: "Control Panel",
+    date: "Session 05",
+    content: "<h3>Settings Configuration</h3><p>Integrated theme manager, 12/24 clock formatter toggle, and runtime environment hostname customizer.</p>"
   }
 ];
 
