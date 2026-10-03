@@ -6,13 +6,23 @@
   <title>RootOS - Terminal Desktop</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="theme-default">
 
   <!-- Desktop Icons Grid -->
   <div id="desktopApps" class="desktop-apps">
+    <div class="app-icon" id="welcomeIcon">
+      <div class="icon-frame">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="app-svg">
+          <polyline points="4 17 10 11 4 5"></polyline>
+          <line x1="12" y1="19" x2="20" y2="19"></line>
+        </svg>
+      </div>
+      <p class="icon-label">Terminal</p>
+    </div>
+
     <div class="app-icon" id="notesIcon">
       <div class="icon-frame">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="app-svg">
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
           <polyline points="14 2 14 8 20 8"></polyline>
           <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -22,30 +32,19 @@
       <p class="icon-label">DevLogs.sh</p>
     </div>
 
-    <div class="app-icon" id="sysinfoIcon">
-      <div class="icon-frame">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2ea043" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-          <line x1="8" y1="21" x2="16" y2="21"></line>
-          <line x1="12" y1="17" x2="12" y2="21"></line>
-        </svg>
-      </div>
-      <p class="icon-label">SysInfo.bin</p>
-    </div>
-
     <div class="app-icon" id="notepadIcon">
       <div class="icon-frame">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#d2a8ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="app-svg">
           <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
           <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
         </svg>
       </div>
-      <p class="icon-label">Notepad.exe</p>
+      <p class="icon-label">Notepad</p>
     </div>
 
     <div class="app-icon" id="calcIcon">
       <div class="icon-frame">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#ff7b72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="app-svg">
           <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
           <line x1="8" y1="6" x2="16" y2="6"></line>
           <line x1="16" y1="14" x2="16" y2="14.01"></line>
@@ -59,25 +58,45 @@
       <p class="icon-label">Calculator</p>
     </div>
 
-    <!-- Paint Desktop Icon -->
     <div class="app-icon" id="paintIcon">
       <div class="icon-frame">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="13.5" cy="6.5" r=".5" fill="#f0883e"></circle>
-          <circle cx="17.5" cy="10.5" r=".5" fill="#f0883e"></circle>
-          <circle cx="8.5" cy="7.5" r=".5" fill="#f0883e"></circle>
-          <circle cx="6.5" cy="12.5" r=".5" fill="#f0883e"></circle>
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="app-svg">
+          <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+          <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+          <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+          <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
           <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
         </svg>
       </div>
       <p class="icon-label">Paint</p>
+    </div>
+
+    <div class="app-icon" id="settingsIcon">
+      <div class="icon-frame">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="app-svg">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </div>
+      <p class="icon-label">Settings</p>
+    </div>
+
+    <div class="app-icon" id="sysinfoIcon">
+      <div class="icon-frame">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="app-svg">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+          <line x1="8" y1="21" x2="16" y2="21"></line>
+          <line x1="12" y1="17" x2="12" y2="21"></line>
+        </svg>
+      </div>
+      <p class="icon-label">SysInfo.bin</p>
     </div>
   </div>
 
   <!-- Start Menu -->
   <div id="startMenu" class="start-menu">
     <div class="start-menu-sidebar">
-      <div class="start-user">root</div>
+      <div class="start-user" id="startUserLabel">root</div>
     </div>
     <div class="start-menu-apps">
       <div class="start-app-item" id="welcomeopen"><span>&gt;</span> Terminal</div>
@@ -85,6 +104,8 @@
       <div class="start-app-item" id="startNotepad"><span>&gt;</span> Notepad</div>
       <div class="start-app-item" id="startCalc"><span>&gt;</span> Calculator</div>
       <div class="start-app-item" id="startPaint"><span>&gt;</span> Paint Canvas</div>
+      <div class="start-app-item" id="startSettings"><span>&gt;</span> Control Panel / Settings</div>
+      <div class="start-app-item" id="startSysinfo"><span>&gt;</span> System Specs</div>
     </div>
   </div>
 
@@ -103,24 +124,24 @@
     </div>
   </div>
 
-  <!-- Window 1: Welcome Screen -->
-  <div class="window" id="welcome" style="top: 100px; left: 140px;">
+  <!-- Window 1: Terminal / Welcome -->
+  <div class="window" id="welcome" style="top: 80px; left: 140px;">
     <div class="windowheader" id="welcomeheader">
       <div class="win-controls">
         <div class="control-btn closebutton" id="welcomeclose" title="Close"></div>
         <div class="control-btn minbutton" id="welcomemin" title="Minimize"></div>
       </div>
-      <span class="headertext">bash -- root@itzdeep:~#</span>
+      <span class="headertext" id="termHeaderLabel">bash -- root@itzdeep:~#</span>
       <div style="width: 24px;"></div>
     </div>
     <div class="window-content terminal-window">
-      <div class="prompt-line"><span class="prompt-user">root@itzdeep</span>:<span class="prompt-dir">~</span># ./init_welcome.sh</div>
+      <div class="prompt-line"><span class="prompt-user" id="termPromptUser">root@itzdeep</span>:<span class="prompt-dir">~</span># ./init_welcome.sh</div>
       <h2 class="terminal-title">Welcome to RootOS</h2>
-      <p class="terminal-desc">An interactive web desktop environment built from scratch.</p>
+      <p class="terminal-desc">An interactive web desktop environment built completely vanilla.</p>
       
       <div class="info-card">
         <p><strong>Architecture:</strong> Vanilla HTML5, CSS3 &amp; JavaScript</p>
-        <p><strong>Controls:</strong> Drag title bars to reposition windows. Tap icons to focus. Use the yellow button to minimize.</p>
+        <p><strong>Controls:</strong> Drag windows, click taskbar tabs to minimize/restore, and customize options in Settings.</p>
       </div>
 
       <div class="terminal-footer">
@@ -131,7 +152,7 @@
   </div>
 
   <!-- Window 2: DevLogs App -->
-  <div class="window" id="notes" style="top: 150px; left: 280px; display: none;">
+  <div class="window" id="notes" style="top: 130px; left: 260px; display: none;">
     <div class="windowheader" id="notesheader">
       <div class="win-controls">
         <div class="control-btn closebutton" id="notesclose" title="Close"></div>
@@ -147,7 +168,7 @@
   </div>
 
   <!-- Window 3: SysInfo App -->
-  <div class="window" id="sysinfo" style="top: 200px; left: 380px; display: none;">
+  <div class="window" id="sysinfo" style="top: 180px; left: 340px; display: none;">
     <div class="windowheader" id="sysinfoheader">
       <div class="win-controls">
         <div class="control-btn closebutton" id="sysinfoclose" title="Close"></div>
@@ -167,29 +188,29 @@
       <ul class="sysinfo-list">
         <li><strong>OS:</strong> RootOS x86_64</li>
         <li><strong>Host:</strong> Browser Runtime Engine</li>
-        <li><strong>Shell:</strong> WebOS-sh 1.0</li>
-        <li><strong>Stack:</strong> JS / DOM API / CSS Grid</li>
+        <li><strong>Shell:</strong> WebOS-sh 1.2</li>
+        <li><strong>Stack:</strong> JS / DOM API / CSS Variables</li>
       </ul>
     </div>
   </div>
 
   <!-- Window 4: Notepad App -->
-  <div class="window" id="notepad" style="top: 180px; left: 350px; display: none;">
+  <div class="window" id="notepad" style="top: 150px; left: 300px; display: none;">
     <div class="windowheader" id="notepadheader">
       <div class="win-controls">
         <div class="control-btn closebutton" id="notepadclose" title="Close"></div>
         <div class="control-btn minbutton" id="notepadmin" title="Minimize"></div>
       </div>
-      <span class="headertext">Notepad - Untitled.txt</span>
+      <span class="headertext">Notepad - Scratchpad.txt</span>
       <div style="width: 24px;"></div>
     </div>
     <div class="window-content notepad-container">
-      <textarea class="notepad-textarea" placeholder="Start typing here..."></textarea>
+      <textarea class="notepad-textarea" placeholder="Start typing notes here..."></textarea>
     </div>
   </div>
 
   <!-- Window 5: Calculator App -->
-  <div class="window" id="calc" style="top: 220px; left: 450px; display: none;">
+  <div class="window" id="calc" style="top: 120px; left: 400px; display: none;">
     <div class="windowheader" id="calcheader">
       <div class="win-controls">
         <div class="control-btn closebutton" id="calcclose" title="Close"></div>
@@ -221,8 +242,8 @@
     </div>
   </div>
 
-  <!-- Window 6: Paint App (Contains the canvas element) -->
-  <div class="window" id="paint" style="top: 120px; left: 320px; display: none;">
+  <!-- Window 6: Paint Canvas App -->
+  <div class="window" id="paint" style="top: 100px; left: 320px; display: none;">
     <div class="windowheader" id="paintheader">
       <div class="win-controls">
         <div class="control-btn closebutton" id="paintclose" title="Close"></div>
@@ -235,13 +256,52 @@
       <div class="paint-toolbar">
         <input type="color" id="paintColor" value="#58a6ff" title="Pick color">
         <select id="paintBrushSize">
-          <option value="2">Thin</option>
-          <option value="5" selected>Normal</option>
-          <option value="12">Thick</option>
+          <option value="2">Thin (2px)</option>
+          <option value="5" selected>Normal (5px)</option>
+          <option value="12">Thick (12px)</option>
         </select>
         <button class="paint-btn" onclick="clearCanvas()">Clear</button>
       </div>
       <canvas id="paintCanvas" width="400" height="260"></canvas>
+    </div>
+  </div>
+
+  <!-- Window 7: Settings App (NEW) -->
+  <div class="window" id="settings" style="top: 110px; left: 220px; display: none;">
+    <div class="windowheader" id="settingsheader">
+      <div class="win-controls">
+        <div class="control-btn closebutton" id="settingsclose" title="Close"></div>
+        <div class="control-btn minbutton" id="settingsmin" title="Minimize"></div>
+      </div>
+      <span class="headertext">Control Panel -- Settings.bin</span>
+      <div style="width: 24px;"></div>
+    </div>
+    <div class="window-content settings-container">
+      <div class="settings-group">
+        <label class="settings-title">Appearance &amp; Desktop Theme</label>
+        <div class="settings-row">
+          <button class="settings-btn" onclick="applyTheme('theme-default')">Classic Dark</button>
+          <button class="settings-btn" onclick="applyTheme('theme-matrix')">Matrix Green</button>
+          <button class="settings-btn" onclick="applyTheme('theme-cyber')">Cyber Neon</button>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <label class="settings-title">Taskbar Clock Format</label>
+        <div class="settings-row">
+          <button class="settings-btn" id="clock12Btn" onclick="setTimeFormat('12')">12-Hour (AM/PM)</button>
+          <button class="settings-btn" id="clock24Btn" onclick="setTimeFormat('24')">24-Hour (Military)</button>
+          <button class="settings-btn" id="secondsToggleBtn" onclick="toggleSeconds()">Toggle Seconds</button>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <label class="settings-title">Host / Terminal Username</label>
+        <div class="settings-input-group">
+          <input type="text" id="hostInput" class="settings-input" placeholder="e.g. root@itzdeep" value="root@itzdeep">
+          <button class="settings-btn" onclick="applyHostname()">Save Hostname</button>
+        </div>
+      </div>
     </div>
   </div>
 
