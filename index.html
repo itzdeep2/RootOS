@@ -56,8 +56,21 @@
           <line x1="8" y1="18" x2="8" y2="18.01"></line>
         </svg>
       </div>
-      <!-- small intentional typo below -->
-      <p class="icon-label">Calulator</p>
+      <p class="icon-label">Calculator</p>
+    </div>
+
+    <!-- Paint Desktop Icon -->
+    <div class="app-icon" id="paintIcon">
+      <div class="icon-frame">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="13.5" cy="6.5" r=".5" fill="#f0883e"></circle>
+          <circle cx="17.5" cy="10.5" r=".5" fill="#f0883e"></circle>
+          <circle cx="8.5" cy="7.5" r=".5" fill="#f0883e"></circle>
+          <circle cx="6.5" cy="12.5" r=".5" fill="#f0883e"></circle>
+          <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
+        </svg>
+      </div>
+      <p class="icon-label">Paint</p>
     </div>
   </div>
 
@@ -67,18 +80,11 @@
       <div class="start-user">root</div>
     </div>
     <div class="start-menu-apps">
-      <div class="start-app-item" id="welcomeopen">
-        <span>></span> Terminal
-      </div>
-      <div class="start-app-item" id="startNotes">
-        <span>></span> DevLogs
-      </div>
-      <div class="start-app-item" id="startNotepad">
-        <span>></span> Notepad
-      </div>
-      <div class="start-app-item" id="startCalc">
-        <span>></span> Calculator
-      </div>
+      <div class="start-app-item" id="welcomeopen"><span>&gt;</span> Terminal</div>
+      <div class="start-app-item" id="startNotes"><span>&gt;</span> DevLogs</div>
+      <div class="start-app-item" id="startNotepad"><span>&gt;</span> Notepad</div>
+      <div class="start-app-item" id="startCalc"><span>&gt;</span> Calculator</div>
+      <div class="start-app-item" id="startPaint"><span>&gt;</span> Paint Canvas</div>
     </div>
   </div>
 
@@ -86,7 +92,7 @@
   <div id="taskbar" class="taskbar">
     <div class="taskbar-left">
       <div class="start-btn" id="startBtn">Root</div>
-      <span class="taskbar-pill">v1.1.0-stable</span>
+      <div class="taskbar-running-apps" id="taskbarApps"></div>
     </div>
     <div class="taskbar-center">
       <span class="status-indicator"></span>
@@ -100,18 +106,21 @@
   <!-- Window 1: Welcome Screen -->
   <div class="window" id="welcome" style="top: 100px; left: 140px;">
     <div class="windowheader" id="welcomeheader">
-      <div class="closebutton" id="welcomeclose" title="Close"></div>
+      <div class="win-controls">
+        <div class="control-btn closebutton" id="welcomeclose" title="Close"></div>
+        <div class="control-btn minbutton" id="welcomemin" title="Minimize"></div>
+      </div>
       <span class="headertext">bash -- root@itzdeep:~#</span>
-      <div style="width: 12px;"></div>
+      <div style="width: 24px;"></div>
     </div>
     <div class="window-content terminal-window">
       <div class="prompt-line"><span class="prompt-user">root@itzdeep</span>:<span class="prompt-dir">~</span># ./init_welcome.sh</div>
       <h2 class="terminal-title">Welcome to RootOS</h2>
-      <p class="terminal-desc">An interactive web desktop environment built from scratch for the Stardance challenge.</p>
+      <p class="terminal-desc">An interactive web desktop environment built from scratch.</p>
       
       <div class="info-card">
-        <p><strong>Architecture:</strong> Vanilla HTML5, CSS3 & JavaScript</p>
-        <p><strong>Controls:</strong> Drag title bars to reposition windows. Tap icons to focus or open applications.</p>
+        <p><strong>Architecture:</strong> Vanilla HTML5, CSS3 &amp; JavaScript</p>
+        <p><strong>Controls:</strong> Drag title bars to reposition windows. Tap icons to focus. Use the yellow button to minimize.</p>
       </div>
 
       <div class="terminal-footer">
@@ -124,9 +133,12 @@
   <!-- Window 2: DevLogs App -->
   <div class="window" id="notes" style="top: 150px; left: 280px; display: none;">
     <div class="windowheader" id="notesheader">
-      <div class="closebutton" id="notesclose" title="Close"></div>
+      <div class="win-controls">
+        <div class="control-btn closebutton" id="notesclose" title="Close"></div>
+        <div class="control-btn minbutton" id="notesmin" title="Minimize"></div>
+      </div>
       <span class="headertext">editor -- devlogs.txt</span>
-      <div style="width: 12px;"></div>
+      <div style="width: 24px;"></div>
     </div>
     <div class="window-content notes-layout">
       <div class="notes-sidebar" id="sidebar"></div>
@@ -137,17 +149,20 @@
   <!-- Window 3: SysInfo App -->
   <div class="window" id="sysinfo" style="top: 200px; left: 380px; display: none;">
     <div class="windowheader" id="sysinfoheader">
-      <div class="closebutton" id="sysinfoclose" title="Close"></div>
+      <div class="win-controls">
+        <div class="control-btn closebutton" id="sysinfoclose" title="Close"></div>
+        <div class="control-btn minbutton" id="sysinfomin" title="Minimize"></div>
+      </div>
       <span class="headertext">diagnostics -- neofetch</span>
-      <div style="width: 12px;"></div>
+      <div style="width: 24px;"></div>
     </div>
     <div class="window-content sysinfo-window">
       <pre class="ascii-art">
-   ______             __  ____  _____
-  / ____/____  ____  / /_/ __ \/ ___/
- / /   / __ \/ __ \/ __/ / / /\__ \ 
-/ /___/ /_/ / /_/ / /_/ /_/ /___/ / 
-\____/\____/\____/\__/\____//____/  
++-----------------------+
+|                       |
+|       R O O T O S     |
+|                       |
++-----------------------+
       </pre>
       <ul class="sysinfo-list">
         <li><strong>OS:</strong> RootOS x86_64</li>
@@ -161,9 +176,12 @@
   <!-- Window 4: Notepad App -->
   <div class="window" id="notepad" style="top: 180px; left: 350px; display: none;">
     <div class="windowheader" id="notepadheader">
-      <div class="closebutton" id="notepadclose" title="Close"></div>
+      <div class="win-controls">
+        <div class="control-btn closebutton" id="notepadclose" title="Close"></div>
+        <div class="control-btn minbutton" id="notepadmin" title="Minimize"></div>
+      </div>
       <span class="headertext">Notepad - Untitled.txt</span>
-      <div style="width: 12px;"></div>
+      <div style="width: 24px;"></div>
     </div>
     <div class="window-content notepad-container">
       <textarea class="notepad-textarea" placeholder="Start typing here..."></textarea>
@@ -173,9 +191,12 @@
   <!-- Window 5: Calculator App -->
   <div class="window" id="calc" style="top: 220px; left: 450px; display: none;">
     <div class="windowheader" id="calcheader">
-      <div class="closebutton" id="calcclose" title="Close"></div>
+      <div class="win-controls">
+        <div class="control-btn closebutton" id="calcclose" title="Close"></div>
+        <div class="control-btn minbutton" id="calcmin" title="Minimize"></div>
+      </div>
       <span class="headertext">Calculator</span>
-      <div style="width: 12px;"></div>
+      <div style="width: 24px;"></div>
     </div>
     <div class="window-content calc-container">
       <div class="calc-display" id="calcDisplay">0</div>
@@ -184,22 +205,43 @@
         <button class="calc-btn" onclick="calcInput('8')">8</button>
         <button class="calc-btn" onclick="calcInput('9')">9</button>
         <button class="calc-btn calc-op" onclick="calcInput('/')">/</button>
-        
         <button class="calc-btn" onclick="calcInput('4')">4</button>
         <button class="calc-btn" onclick="calcInput('5')">5</button>
         <button class="calc-btn" onclick="calcInput('6')">6</button>
         <button class="calc-btn calc-op" onclick="calcInput('*')">*</button>
-        
         <button class="calc-btn" onclick="calcInput('1')">1</button>
         <button class="calc-btn" onclick="calcInput('2')">2</button>
         <button class="calc-btn" onclick="calcInput('3')">3</button>
         <button class="calc-btn calc-op" onclick="calcInput('-')">-</button>
-        
         <button class="calc-btn" onclick="calcClear()">C</button>
         <button class="calc-btn" onclick="calcInput('0')">0</button>
         <button class="calc-btn calc-eval" onclick="calcEval()">=</button>
         <button class="calc-btn calc-op" onclick="calcInput('+')">+</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Window 6: Paint App (Contains the canvas element) -->
+  <div class="window" id="paint" style="top: 120px; left: 320px; display: none;">
+    <div class="windowheader" id="paintheader">
+      <div class="win-controls">
+        <div class="control-btn closebutton" id="paintclose" title="Close"></div>
+        <div class="control-btn minbutton" id="paintmin" title="Minimize"></div>
+      </div>
+      <span class="headertext">Paint.exe</span>
+      <div style="width: 24px;"></div>
+    </div>
+    <div class="window-content paint-container">
+      <div class="paint-toolbar">
+        <input type="color" id="paintColor" value="#58a6ff" title="Pick color">
+        <select id="paintBrushSize">
+          <option value="2">Thin</option>
+          <option value="5" selected>Normal</option>
+          <option value="12">Thick</option>
+        </select>
+        <button class="paint-btn" onclick="clearCanvas()">Clear</button>
+      </div>
+      <canvas id="paintCanvas" width="400" height="260"></canvas>
     </div>
   </div>
 
